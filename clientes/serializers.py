@@ -15,3 +15,8 @@ class ClienteSerializer(serializers.ModelSerializer):
         if not nome.isalpha():
             raise serializers.ValidationError("Não inclua números neste campo")
         return nome
+
+    def validate_rg(self, rg):
+        if len(rg) != 9:
+            raise serializers.ValidationError("O RG deve ter 9 dígitos")
+        return rg
