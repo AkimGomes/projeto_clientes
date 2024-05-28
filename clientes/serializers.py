@@ -20,3 +20,8 @@ class ClienteSerializer(serializers.ModelSerializer):
         if len(rg) != 9:
             raise serializers.ValidationError("O RG deve ter 9 dígitos")
         return rg
+
+    def validate_celular(self, celular):
+        if len(celular) != 11:
+            raise serializers.ValidationError("O celular deve ter 11 dígitos")
+        return celular
